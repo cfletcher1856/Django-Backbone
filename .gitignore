@@ -25,3 +25,26 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+
+# Custom ignore stuff
+
+*.sw[a-z]
+*~
+.DS_Store
+Thumbs.db
+*.orig
+.wkrc
+.idea
+
+log/*
+run/*
+tmp/*
+!log/.empty
+!run/.empty
+!tmp/.empty
+.ropeproject
+
+backbone/settings/local.py
+backbone/static/*
+!backbone/static/.empty
