@@ -66,8 +66,6 @@ MEDIA_URL = '/uploads/'
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = path.join(PROJECT_ROOT, 'static')
 
-print STATIC_ROOT
-
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
@@ -132,7 +130,7 @@ INSTALLED_APPS = (
 COMPRESS_OUTPUT_DIR = '_cache'
 
 COMPRESS_PRECOMPILERS = (
-    ('text/less', 'lessc {{infile}} {{outfile}}'),
+    ('text/less', 'lessc {infile} {outfile}'),
 )
 
 

@@ -22,12 +22,7 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="{% url news %}">
-            <img src="{% static "images/white-logo.png" %}"/>
-          </a>
-          <ul class="nav">
-            <li><a href="{% url ticketing:list %}">Tickets</a></li>
-          </ul>
+          <a class="brand" href="#">Colin's Backbone</a>
         </div>
       </div>
     </div>
@@ -83,9 +78,7 @@
     </div> <!-- /container -->
 
     {% compress js %}
-    <script type="text/javascript" src="{% static "js/jquery-1.7.2.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/underscore.js" %}"></script>
-    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <script data-main="{% static "js/main" %}" src="{% static "js/libs/require.js" %}"></script>
     <script type="text/javascript">
       $(function(){
 
