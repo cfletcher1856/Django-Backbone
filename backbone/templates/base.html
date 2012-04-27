@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load compress %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Colin's Backbone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% compress css %}
+    <link type="text/less" rel="stylesheet" href="{% static "less/style.less" %}">
+    {% block stylesheets %}{% endblock %}
+    {% endcompress %}
+
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="{% url news %}">
+            <img src="{% static "images/white-logo.png" %}"/>
+          </a>
+          <ul class="nav">
+            <li><a href="{% url ticketing:list %}">Tickets</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        {# override pageheader_wrapper to remove the header entirely #}
+        {% block pageheader_outer %}
+        <div class="page-header">
+          <h1>{% block pagetitle %}{% endblock %}
+            <small>{% block subtitle %}{% endblock %}</small>
+          </h1>
+        </div>
+        {% endblock %}
+
+        {% block breadcrumbs_outer %}
+        <div class="row">
+          <div id="breadcrumbs" class="span12">
+            {% block breadcrumbs %}{% endblock %}
+          </div>
+        </div>
+        {% endblock %}
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert fade in alert-{{ message.tags }}">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <div class="row">
+          <div class="span12">
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+        <div class="row">
+          <span class="pull-right">
+            <a href="#">Back to top</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="container">
+          <div class="row footermenu">
+            <p>&copy; Colin Fletcher {% now "Y" %}</p>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+    {% compress js %}
+    <script type="text/javascript" src="{% static "js/jquery-1.7.2.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/underscore.js" %}"></script>
+    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript">
+      $(function(){
+
+      });
+    </script>
+    {% block javascript %}{% endblock %}
+    {% endcompress %}
+  </body>
+</html>
