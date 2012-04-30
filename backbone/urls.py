@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic.simple import direct_to_template
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django import template
+
 
 template.add_to_builtins('django.contrib.staticfiles.templatetags.staticfiles')
 
@@ -17,3 +19,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns += staticfiles_urlpatterns()

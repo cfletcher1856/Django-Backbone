@@ -23,6 +23,13 @@
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="#">Colin's Backbone</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="#">Home</a></li>
+              <li><a href="#/projects">Project List</a></li>
+              <li><a href="#/users">User List</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -58,6 +65,9 @@
         <div class="row">
           <div class="span12">
             {% block content %}{% endblock %}
+            <div id="page">
+              Loading....
+            </div>
           </div>
         </div>
         <div class="row">
@@ -78,10 +88,10 @@
     </div> <!-- /container -->
 
     {% compress js %}
-    <script data-main="{% static "js/main" %}" src="{% static "js/libs/require.js" %}"></script>
+    <script data-main="{% static "js/main" %}" src="{% static "js/libs/require/require.js" %}"></script>
     <script type="text/javascript">
       $(function(){
-
+        alert("ready");
       });
     </script>
     {% block javascript %}{% endblock %}
